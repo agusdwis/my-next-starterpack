@@ -4,7 +4,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import Head from 'components/CustomHead';
+import Head from '@/components/CustomHead';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
