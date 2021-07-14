@@ -3,3 +3,5 @@
 **/.next/*
 *.css
 *.svg
+sw.js
+workbox-*.js
