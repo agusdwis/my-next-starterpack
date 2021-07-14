@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app'
-import { DefaultSeo } from 'next-seo'
+import type { AppProps } from 'next/app';
+import { DefaultSeo } from 'next-seo';
 
-import SEO from '../next-seo.config.js'
-import '../styles/globals.css'
+import SEO from '../next-seo.config.js';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -10,6 +10,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
-export default MyApp
+export default MyApp;

@@ -1,4 +1,6 @@
 export default {
+  titleTemplate: 'My App | %s',
+  defaultTitle: 'My App',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
@@ -10,4 +12,4 @@ export default {
     site: '@site',
     cardType: 'summary_large_image',
   },
-}
+};

@@ -1,5 +1,5 @@
-import React from 'react'
-import { NextSeo } from 'next-seo'
+import React from 'react';
+import { NextSeo } from 'next-seo';
 
 const Home = (): JSX.Element => (
   <>
@@ -10,6 +10,7 @@ const Home = (): JSX.Element => (
         url: 'https://www.url.ie/a',
         title: 'Open Graph Title',
         description: 'Open Graph Description',
+        site_name: 'SiteName',
         images: [
           {
             url: 'https://www.example.ie/og-image-01.jpg',
@@ -26,7 +27,6 @@ const Home = (): JSX.Element => (
           { url: 'https://www.example.ie/og-image-03.jpg' },
           { url: 'https://www.example.ie/og-image-04.jpg' },
         ],
-        site_name: 'SiteName',
       }}
     />
     <div className="h-screen w-full">
@@ -35,6 +35,6 @@ const Home = (): JSX.Element => (
       </div>
     </div>
   </>
-)
+);
 
-export default Home
+export default Home;
