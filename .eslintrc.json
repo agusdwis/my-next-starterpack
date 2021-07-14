@@ -10,9 +10,14 @@
     },
     "import/resolver": {
       "typescript": {}
+      // "node": {
+      //   "extensions": [".ts", ".tsx"]
+      // }
     }
   },
   "extends": [
+    "next",
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "airbnb",
     "eslint:recommended",
@@ -77,6 +82,7 @@
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off"
   }
 }
