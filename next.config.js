@@ -1,6 +1,6 @@
-const path = require('path')
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+const path = require('path');
+const withPWA = require('next-pwa');
+const runtimeCaching = require('next-pwa/cache');
 
 module.exports = withPWA({
   reactStrictMode: true,
@@ -10,7 +10,7 @@ module.exports = withPWA({
     runtimeCaching,
   },
   webpack: (config) => {
-    config.resolve.modules.push(path.resolve('./'))
-    return config
+    config.resolve.modules.push(path.resolve('./'));
+    return config;
   },
-})
+});
