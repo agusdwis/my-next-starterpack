@@ -2,6 +2,8 @@ const path = require('path');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
+const { i18n } = require('./next-i18next.config.js');
+
 module.exports = withPWA({
   reactStrictMode: true,
   pwa: {
@@ -13,4 +15,5 @@ module.exports = withPWA({
     config.resolve.modules.push(path.resolve('./'));
     return config;
   },
+  i18n,
 });
