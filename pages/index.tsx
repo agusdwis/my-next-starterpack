@@ -45,14 +45,10 @@ const Home = (): JSX.Element => {
   );
 };
 
-type IParams = {
-  locale?: string | undefined;
-};
-
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const { locale } = context as IParams;
+  const { locale } = context;
 
   return {
     props: {
