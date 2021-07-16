@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
+import { useDispatch } from 'react-redux';
 
 import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { TypesMovies } from '@/stores/actions';
 
 const Home = (): JSX.Element => {
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getData = async (): Promise<any> => {
+      dispatch({
+        type: TypesMovies.GET_MOVIES_START,
+        payload: { search: 'Batman', page: 1 },
+      });
+    };
+
+    getData();
+  }, [dispatch]);
 
   return (
     <>
@@ -45,14 +59,10 @@ const Home = (): JSX.Element => {
   );
 };
 
-type IParams = {
-  locale?: string | undefined;
-};
-
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const { locale } = context as IParams;
+  const { locale } = context;
 
   return {
     props: {
