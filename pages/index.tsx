@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
+import { connect } from 'react-redux';
 
 import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { TypesMovies } from '@/stores/actions';
 
-const Home = (): JSX.Element => {
+const Home = (props: any): JSX.Element => {
+  const { movie, getMovies } = props;
   const { t } = useTranslation('common');
+
+  useEffect(() => {
+    getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // eslint-disable-next-line no-console
+  console.log(movie);
 
   return (
     <>
@@ -57,4 +68,12 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Home;
+const mapStateToProps = (state: any) => ({
+  movie: state.movie,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getMovies: (): void => dispatch({ type: TypesMovies.GET_MOVIES }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
