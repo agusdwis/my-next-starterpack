@@ -1,26 +1,27 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, StrictEffect } from 'redux-saga/effects';
 
-// Import all actions
-import { getMovies } from '../apis/movieAPIs';
+// Import Actions
+import API from '../apis/movieAPI';
 import { TypesMovies, appActions, movieActions } from '../actions';
 
-// Get movies list
-async function getMovie() {
-  const response = await getMovies();
-  return response;
-}
-
-function* GetAllMovies(): Generator<any, void, never> {
+// Get Movies List
+function* GetAllMovies(actions: any): Generator<StrictEffect, void, any> {
   try {
     yield put(appActions.startLoading());
 
-    const response = yield call(getMovie);
-    yield put(movieActions.SuccessGetMovies(response));
+    const response = yield call(API.getMovies, actions.payload);
+
+    if (response.Response === 'True') {
+      yield put(movieActions.SuccessGetMovies(response));
+    } else {
+      yield put(movieActions.FailedGetMovies(response.Error));
+    }
+    yield put(appActions.stopLoading());
   } catch (error) {
     yield put(movieActions.FailedGetMovies(error.message));
   }
 }
 
-export default function* movieSagas(): Generator<any, void, never> {
-  yield takeLatest(TypesMovies.GET_MOVIES, GetAllMovies);
+export default function* movieSagasWatcher(): Generator<any, void, never> {
+  yield takeLatest(TypesMovies.GET_MOVIES_START, GetAllMovies);
 }

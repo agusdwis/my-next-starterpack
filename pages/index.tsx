@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TypesMovies } from '@/stores/actions';
 
-const Home = (props: any): JSX.Element => {
-  const { movie, getMovies } = props;
+const Home = (): JSX.Element => {
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const getData = async (): Promise<any> => {
+      dispatch({
+        type: TypesMovies.GET_MOVIES_START,
+        payload: { search: 'Batman', page: 1 },
+      });
+    };
 
-  // eslint-disable-next-line no-console
-  console.log(movie);
+    getData();
+  }, [dispatch]);
 
   return (
     <>
@@ -68,12 +71,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-const mapStateToProps = (state: any) => ({
-  movie: state.movie,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  getMovies: (): void => dispatch({ type: TypesMovies.GET_MOVIES }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

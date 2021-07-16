@@ -5,9 +5,9 @@ import { TypesMovies } from '../actions';
 export type InitialMovieState = typeof initialMovieState;
 
 const initialMovieState = {
-  movies: [],
   error: false,
   message: '',
+  movies: [],
 };
 
 const movieReducers = (

@@ -1,11 +1,11 @@
-import { spawn } from 'redux-saga/effects';
+import { all, spawn } from 'redux-saga/effects';
 
 // Import Sagas
-import movieSagas from './movieSagas';
+import movieSagasWatcher from './movieSagas';
 
-// Export Sagas
+// Export Combined Saga
 export default function* rootSaga() {
   // eslint-disable-next-line no-console
-  console.log('Hello From Redux-Saga!');
-  yield spawn(movieSagas);
+  console.log('Redux Saga is Running!');
+  yield all([spawn(movieSagasWatcher)]);
 }

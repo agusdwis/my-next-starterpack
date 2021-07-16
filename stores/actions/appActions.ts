@@ -11,7 +11,7 @@ export const appActions = {
     payload: null,
   }),
 
-  endLoading: (): BaseAction => ({
+  stopLoading: (): BaseAction => ({
     type: TypesApps.STOP_LOADING,
     payload: null,
   }),
