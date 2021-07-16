@@ -15,5 +15,9 @@ module.exports = withPWA({
     config.resolve.modules.push(path.resolve('./'));
     return config;
   },
+  env: {
+    MOVIES_API_URL: process.env.MOVIES_API_URL,
+    MOVIES_API_KEY: process.env.MOVIES_API_KEY,
+  },
   i18n,
 });

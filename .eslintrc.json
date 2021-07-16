@@ -84,6 +84,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
     "import/no-unresolved": "warn",
-    "import/no-named-as-default-member": "off"
+    "import/no-named-as-default-member": "off",
+    "global-require": "off"
   }
 }

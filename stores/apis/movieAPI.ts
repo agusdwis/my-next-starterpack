@@ -1,13 +1,9 @@
-import defaultAxios from 'axios';
-
-const axios = defaultAxios.create({
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+import createApi from '@/libs/apis';
 
 export const getMovies = async (payload: any) => {
-  const response = await axios.get('https://www.omdbapi.com?apikey=faf7e5bb', {
+  const api = await createApi();
+
+  const response = await api.get('', {
     params: {
       s: payload.search,
       page: payload.page,
