@@ -1,5 +1,5 @@
-import { BaseAction } from '@/interfaces';
 import { HYDRATE } from 'next-redux-wrapper';
+import { BaseAction } from '@/interfaces';
 import { TypesMovies } from '../actions';
 
 export type InitialMovieState = typeof initialMovieState;
